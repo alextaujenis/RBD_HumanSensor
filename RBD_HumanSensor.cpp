@@ -6,7 +6,7 @@
 namespace RBD {
 
   HumanSensor::HumanSensor(int send_pin, int receive_pin)
-  : _cap_sensor(send_pin, receive_pin), _threshold(3) {
+  : _cap_sensor(send_pin, receive_pin), _threshold(2) {
     _cap_sensor.setSampleSize(100);
     _cap_sensor.start();
   }
@@ -33,7 +33,7 @@ namespace RBD {
   }
 
   bool HumanSensor::isPickup() {
-    return getLevel() > 2;
+    return getLevel() == 3;
   }
 
   int HumanSensor::getLevel() {
@@ -60,8 +60,7 @@ namespace RBD {
   }
 
   void HumanSensor::setPickupValue(int value) {
-    _threshold.setLevel(3, value);
-    _threshold.setMaxLevel(value + 10); // just consider levels 3 and 4 as pickup
+    _threshold.setMaxLevel(value);
   }
 
   void HumanSensor::setModifier(int value) {
