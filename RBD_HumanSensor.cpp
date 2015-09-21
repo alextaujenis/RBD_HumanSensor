@@ -8,7 +8,6 @@ namespace RBD {
   HumanSensor::HumanSensor(int send_pin, int receive_pin)
   : _cap_sensor(send_pin, receive_pin), _threshold(2) {
     _cap_sensor.setSampleSize(100);
-    _cap_sensor.start();
   }
 
   void HumanSensor::update() {
