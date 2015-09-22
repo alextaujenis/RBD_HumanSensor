@@ -47,6 +47,7 @@ namespace RBD {
       // store the old value
       _temp_prev_value = _temp_value;
     }
+    // return the changed or memoized level
     return _temp_level;
   }
 

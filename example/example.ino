@@ -11,7 +11,7 @@ RBD::HumanSensor human(1,0);
 void setup() {
   Serial.begin(BAUD);
   timer.setHertz(50);
-  human.setNearValue(104);
+  human.setNearValue(100);
   human.setTouchValue(120);
   human.setPickupValue(140);
 }
