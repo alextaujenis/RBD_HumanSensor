@@ -1,6 +1,6 @@
-#include <RBD_Timer.h>
 #include <RBD_Capacitance.h>
 #include <RBD_Threshold.h>
+#include <RBD_Timer.h>
 #include <RBD_HumanSensor.h>
 
 #define BAUD 115200
@@ -9,11 +9,11 @@ RBD::Timer timer;
 RBD::HumanSensor human(1,0);
 
 void setup() {
-  Serial.begin(BAUD);
   timer.setHertz(50);
   human.setNearValue(100);
   human.setTouchValue(120);
   human.setPickupValue(140);
+  Serial.begin(BAUD);
 }
 
 void loop() {
@@ -38,6 +38,6 @@ void loop() {
       Serial.print("-1. error ");
     }
 
-    Serial.println(human.getValue());
+    Serial.println(human.getRawValue());
   }
 }

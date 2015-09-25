@@ -8,6 +8,10 @@ namespace RBD {
   HumanSensor::HumanSensor(int send_pin, int receive_pin)
   : _cap_sensor(send_pin, receive_pin), _threshold(2) {
     _cap_sensor.setSampleSize(100);
+    // default threshold values are set at unobtainable numbers so they can remain unused
+    _threshold.setLevel(1,1000010);
+    _threshold.setLevel(2,1000020);
+    _threshold.setMaxLevel(1000030);
   }
 
   void HumanSensor::update() {
@@ -20,35 +24,19 @@ namespace RBD {
   }
 
   bool HumanSensor::isGone() {
-    return getLevel() == 0;
+    return getActiveLevel() == 0;
   }
 
   bool HumanSensor::isNear() {
-    return getLevel() == 1;
+    return getActiveLevel() == 1;
   }
 
   bool HumanSensor::isTouch() {
-    return getLevel() == 2;
+    return getActiveLevel() == 2;
   }
 
   bool HumanSensor::isPickup() {
-    return getLevel() == 3;
-  }
-
-  int HumanSensor::getLevel() {
-    // this function memoizes the level so it's only computed when the raw value or modifier changes
-    // get the current (modifed raw) value
-    _temp_value = getValue();
-
-    // check if it has changed
-    if (_temp_value != _temp_prev_value) {
-      // save a new level if it has changed
-      _temp_level = _threshold.computeLevel(_temp_value);
-      // store the old value
-      _temp_prev_value = _temp_value;
-    }
-    // return the changed or memoized level
-    return _temp_level;
+    return getActiveLevel() == 3;
   }
 
   void HumanSensor::setNearValue(int value) {
@@ -71,11 +59,27 @@ namespace RBD {
     setModifier(0);
   }
 
+  int HumanSensor::getValue() {
+    return _raw_value + _raw_value_modifier;
+  }
+
   int HumanSensor::getRawValue() {
     return _raw_value;
   }
 
-  int HumanSensor::getValue() {
-    return _raw_value + _raw_value_modifier;
+  int HumanSensor::getActiveLevel() {
+    // this function memoizes the level so it's only computed when the raw value or modifier changes
+    // get the current (modifed raw) value
+    _temp_value = getValue();
+
+    // check if it has changed
+    if (_temp_value != _temp_prev_value) {
+      // save a new level if it has changed
+      _temp_level = _threshold.computeLevel(_temp_value);
+      // store the old value
+      _temp_prev_value = _temp_value;
+    }
+    // return the changed or memoized level
+    return _temp_level;
   }
 }

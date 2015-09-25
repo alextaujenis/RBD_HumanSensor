@@ -17,9 +17,9 @@ namespace RBD {
       void setPickupValue(int value);
       void setModifier(int value);
       void resetModifier();
-      int getLevel();
-      int getRawValue();
       int getValue();
+      int getRawValue();
+      int getActiveLevel();
     private:
       int _raw_value          = 0;
       int _raw_value_modifier = 0;
