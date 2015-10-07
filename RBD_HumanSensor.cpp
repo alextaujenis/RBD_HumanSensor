@@ -7,11 +7,11 @@ namespace RBD {
 
   HumanSensor::HumanSensor(int send_pin, int receive_pin)
   : _cap_sensor(send_pin, receive_pin), _threshold(2) {
-    _cap_sensor.setSampleSize(100);
+    _cap_sensor.setSampleSize(1000);
     // default threshold values are set at unobtainable numbers so they can remain unused
-    _threshold.setLevel(1,1000010);
-    _threshold.setLevel(2,1000020);
-    _threshold.setMaxLevel(1000030);
+    _threshold.setLevel(1,10010);
+    _threshold.setLevel(2,10020);
+    _threshold.setMaxLevel(10030);
   }
 
   void HumanSensor::update() {
