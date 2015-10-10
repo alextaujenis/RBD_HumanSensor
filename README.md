@@ -17,39 +17,39 @@ This real-time library requires that you manage the flow of your program without
 
 **Example Sketch**:
 
-		#include <RBD_Capacitance.h>
-		#include <RBD_Threshold.h>
-		#include <RBD_HumanSensor.h>
+    #include <RBD_Capacitance.h>
+    #include <RBD_Threshold.h>
+    #include <RBD_HumanSensor.h>
 
-		RBD::HumanSensor human_sensor(1, 0); // send, receive
+    RBD::HumanSensor human_sensor(1, 0); // send, receive
 
-		void setup() {
-		  Serial.begin(115200);
-		  human_sensor.setNearValue(100);
-		  human_sensor.setTouchValue(200);
-		  human_sensor.setPickupValue(300);
-		}
+    void setup() {
+      Serial.begin(115200);
+      human_sensor.setNearValue(100);
+      human_sensor.setTouchValue(200);
+      human_sensor.setPickupValue(300);
+    }
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onGone()) {
-		    Serial.print("0. GONE   ");
-		  }
-		  else if(human_sensor.onNear()) {
-		    Serial.print("1. NEAR   ");
-		  }
-		  else if(human_sensor.onTouch()) {
-		    Serial.print("2. TOUCH  ");
-		  }
-		  else if(human_sensor.onPickup()) {
-		    Serial.print("3. PICKUP ");
-		  }
+      if(human_sensor.onGone()) {
+        Serial.print("0. GONE   ");
+      }
+      else if(human_sensor.onNear()) {
+        Serial.print("1. NEAR   ");
+      }
+      else if(human_sensor.onTouch()) {
+        Serial.print("2. TOUCH  ");
+      }
+      else if(human_sensor.onPickup()) {
+        Serial.print("3. PICKUP ");
+      }
 
-		  if(human_sensor.onRawValueChange()) {
-		    Serial.println(human_sensor.getRawValue());
-		  }
-		}
+      if(human_sensor.onRawValueChange()) {
+        Serial.println(human_sensor.getRawValue());
+      }
+    }
 
 #Documentation
 ##Public Methods
@@ -112,23 +112,23 @@ Example:
 ##setNearValue(value)
 Provide an integer from [getRawValue()](#getrawvalue) to calibrate the lowest threshold for when a person is near the sensor.
 
-		void setup() {
-		  human_sensor.setNearValue(100);
-		}
+    void setup() {
+      human_sensor.setNearValue(100);
+    }
 
 ##setTouchValue(value)
 Provide an integer from [getRawValue()](#getrawvalue) to calibrate the lowest threshold for when a person is touching the sensor.
 
-		void setup() {
-		  human_sensor.setTouchValue(150);
-		}
+    void setup() {
+      human_sensor.setTouchValue(150);
+    }
 
 ##setPickupValue(value)
 Provide an integer from [getRawValue()](#getrawvalue) to calibrate the lowest threshold for when a person is picking up the sensor.
 
-		void setup() {
-		  human_sensor.setPickupValue(200);
-		}
+    void setup() {
+      human_sensor.setPickupValue(200);
+    }
 
 ##setModifier(value)
 Provide a positive or negative integer to temporarily adjust the human sensor threshold scale. The default value is 0.
@@ -143,25 +143,25 @@ For example; if you have calibrated the scale and turn on a motor near the senso
 
 Example:
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(...) { // motor is on
-		    human_sensor.setModifier(200);
-		  }
-		  else {
-		    human_sensor.resetModifier();
-		  }
+      if(...) { // motor is on
+        human_sensor.setModifier(200);
+      }
+      else {
+        human_sensor.resetModifier();
+      }
 
-		  // when the motor is on; require +200 more from
-		  // the raw sensor reading to trigger all events
-		  if(human_sensor.isNear()) {
-		    ...
-		  }
-		  else if(...) {
-		    ...
-		  }
-		}
+      // when the motor is on; require +200 more from
+      // the raw sensor reading to trigger all events
+      if(human_sensor.isNear()) {
+        ...
+      }
+      else if(...) {
+        ...
+      }
+    }
 
 ##resetModifier()
 Changes the [setModifier()](#setmodifiervalue) back to 0 and resets calibration of the human sensor threshold scale.
@@ -176,97 +176,97 @@ For example; if you have calibrated the scale and turn on a motor near the senso
 
 Example:
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(...) {
-		    human_sensor.setModifier(200);
-		  }
-		  else {  // motor is off
-		    human_sensor.resetModifier();
-		  }
+      if(...) {
+        human_sensor.setModifier(200);
+      }
+      else {  // motor is off
+        human_sensor.resetModifier();
+      }
 
-		  // when the motor is off; reset the
-		  // threshold values for all events
-		  if(human_sensor.isNear()) {
-		    ...
-		  }
-		  else if(...) {
-		    ...
-		  }
-		}
+      // when the motor is off; reset the
+      // threshold values for all events
+      if(human_sensor.isNear()) {
+        ...
+      }
+      else if(...) {
+        ...
+      }
+    }
 
 ##isGone()
 Returns true if no human is present and the sensor is reading a value below the [setNearValue()](#setnearvaluevalue). This will always return true if no thresholds (near, touch, pickup) are set.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.isGone()) {
-		    ...
-		  }
-		}
+      if(human_sensor.isGone()) {
+        ...
+      }
+    }
 
 ##isNear()
 Returns true if a human is present and the sensor is reading a value at or above the [setNearValue()](#setnearvaluevalue).
 
 Returns false if the sensor is reading a value below the [setNearValue()](#setnearvaluevalue), or if a [setTouchValue()](#settouchvaluevalue) has been assigned and the sensor is reading a value at or above the [isTouch()](#istouch) value.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.isNear()) {
-		    ...
-		  }
-		}
+      if(human_sensor.isNear()) {
+        ...
+      }
+    }
 
 ##isTouch()
 Returns true if a human is touching the sensor and it is reading a value at or above the [setTouchValue()](#settouchvaluevalue).
 
 Returns false if the sensor is reading a value below the [setTouchValue()](#settouchvaluevalue), or if a [setPickupValue()](#setpickupvaluevalue) has been assigned and the sensor is reading a value at or above the [isPickup()](#ispickup) value.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.isTouch()) {
-		    ...
-		  }
-		}
+      if(human_sensor.isTouch()) {
+        ...
+      }
+    }
 
 ##isPickup()
 Returns true if a human is picking up the sensor and it is reading a value at or above the [setPickupValue()](#setpickupvaluevalue).
 
 Returns false if the sensor is reading a value below the [setPickupValue()](#setpickupvaluevalue).
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.isPickup()) {
-		    ...
-		  }
-		}
+      if(human_sensor.isPickup()) {
+        ...
+      }
+    }
 
 #getValue()
 Returns the capacitance reading after being adjusted with the value given to [setModifier()](#setmodifiervalue).
 
 This will return the raw capacitance reading if you have not used [setModifier()](#setmodifiervalue) yet, or if you have called [resetModifier()](#resetmodifier).
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onValueChange()) {
-		    Serial.println(human_sensor.getValue());
-		  }
-		}
+      if(human_sensor.onValueChange()) {
+        Serial.println(human_sensor.getValue());
+      }
+    }
 
 ##getRawValue()
 Returns the raw capacitance reading and ignores any value that has been passed to [setModifier()](#setmodifiervalue).
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  Serial.println(human_sensor.getRawValue());
-		}
+      Serial.println(human_sensor.getRawValue());
+    }
 
 ##getActiveLevel()
 Returns the current sensor level after being adjusted by [setModifier()](#setmodifiervalue).
@@ -279,95 +279,95 @@ Returns the current sensor level after being adjusted by [setModifier()](#setmod
 
 Example:
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  Serial.println(human_sensor.getActiveLevel());
-		}
+      Serial.println(human_sensor.getActiveLevel());
+    }
 
 ##onGone()
 This method will return true once the sensor registers a value below the [setNearValue()](#setnearvaluevalue). The active level must change away from and then come back to [isGone()](#isgone) in order for this method to return true again.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onGone()) {
-		    // code only runs once per event
-		    Serial.println("Gone");
-		  }
-		}
+      if(human_sensor.onGone()) {
+        // code only runs once per event
+        Serial.println("Gone");
+      }
+    }
 
 ##onNear()
 This method will return true once the sensor registers a value at or above the [setNearValue()](#setnearvaluevalue) and below the [setTouchValue()](#settouchvaluevalue). The active level must change away from and then come back to [isNear()](#isnear) in order for this method to return true again.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onNear()) {
-		    // code only runs once per event
-		    Serial.println("Near");
-		  }
-		}
+      if(human_sensor.onNear()) {
+        // code only runs once per event
+        Serial.println("Near");
+      }
+    }
 
 ##onTouch()
 This method will return true once the sensor registers a value at or above the [setTouchValue()](#settouchvaluevalue) and below the [setPickupValue()](#setpickupvaluevalue). The active level must change away from and then come back to [isTouch()](#istouch) in order for this method to return true again.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onTouch()) {
-		    // code only runs once per event
-		    Serial.println("Touch");
-		  }
-		}
+      if(human_sensor.onTouch()) {
+        // code only runs once per event
+        Serial.println("Touch");
+      }
+    }
 
 ##onPickup()
 This method will return true once the sensor registers a value at or above the [setPickupValue()](#setpickupvaluevalue). The active level must change away from and then come back to [isPickup()](#ispickup) in order for this method to return true again.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onPickup()) {
-		    // code only runs once per event
-		    Serial.println("Pickup");
-		  }
-		}
+      if(human_sensor.onPickup()) {
+        // code only runs once per event
+        Serial.println("Pickup");
+      }
+    }
 
 ##onValueChange()
 This method will return true once the [getValue()](#getvalue) changes.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onValueChange()) {
-		    // code only runs once per event
-		    Serial.println(human_sensor.getValue());
-		  }
-		}
+      if(human_sensor.onValueChange()) {
+        // code only runs once per event
+        Serial.println(human_sensor.getValue());
+      }
+    }
 
 ##onRawValueChange()
 This method will return true once the [getRawValue()](#getrawvalue) changes.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onRawValueChange()) {
-		    // code only runs once per event
-		    Serial.println(human_sensor.getRawValue());
-		  }
-		}
+      if(human_sensor.onRawValueChange()) {
+        // code only runs once per event
+        Serial.println(human_sensor.getRawValue());
+      }
+    }
 
 ##onActiveLevelChange()
 This method will return true once the [getActiveLevel()](#getactivelevel) changes.
 
-		void loop() {
-		  human_sensor.update();
+    void loop() {
+      human_sensor.update();
 
-		  if(human_sensor.onActiveLevelChange()) {
-		    // code only runs once per event
-		    Serial.println(human_sensor.getActiveLevel());
-		  }
-		}
+      if(human_sensor.onActiveLevelChange()) {
+        // code only runs once per event
+        Serial.println(human_sensor.getActiveLevel());
+      }
+    }
 
 #License
 This code is available under the [MIT License](http://opensource.org/licenses/mit-license.php).
