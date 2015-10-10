@@ -17,9 +17,9 @@ This real-time library requires that you manage the flow of your program without
 
 **Example Sketch**:
 
-    #include <RBD_Capacitance.h>
-    #include <RBD_Threshold.h>
-    #include <RBD_HumanSensor.h>
+    #include <RBD_Capacitance.h> // https://github.com/alextaujenis/RBD_Capacitance
+    #include <RBD_Threshold.h>   // https://github.com/alextaujenis/RBD_Threshold
+    #include <RBD_HumanSensor.h> // https://github.com/alextaujenis/RBD_HumanSensor
 
     RBD::HumanSensor human_sensor(1, 0); // send, receive
 
