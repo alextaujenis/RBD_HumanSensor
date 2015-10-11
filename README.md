@@ -1,7 +1,7 @@
 #Arduino Human Sensor Library
 Detect and interact with humans through change in capacitance. You can calibrate this library for your sensor very quickly to detect [onNear()](#onnear), [onTouch()](#ontouch), and [onPickup()](#onpickup) events. The example below uses a piece of aluminum foil, but you can attach the wire to anything conductive and calibrate the sensor accordingly.
 
-This library measures relative capacitance so it is prone to interference. You can temporarily adjust the entire scale and then reset it when the capacitance disruption has stopped by using setModifier() and resetModifier(). Look at the [Arduino Capacitance Library](https://github.com/alextaujenis/RBD_Capacitance) if you would like to know more about how capacitance is calculated.
+This library measures relative capacitance so it is prone to interference. You can temporarily adjust the entire scale and then reset it when the capacitance disruption has stopped by using [setModifier()](#setmodifiervalue) and [resetModifier()](#resetmodifiervalue). Look at the [Arduino Capacitance Library](https://github.com/alextaujenis/RBD_Capacitance) if you would like to know more about how capacitance is calculated.
 
 ##Real-Time Library
 This real-time library requires that you manage the flow of your program without delay() or interrupts. Check out this [Arduino Timer Library](https://github.com/alextaujenis/RBD_Timer) if you are managing millis() by hand.
