@@ -1,4 +1,4 @@
-// Arduino RBD Human Sensor Library v1.0.0 Example - Calibrate and test a human sensor gone, near, touch, and pickup events.
+// Arduino RBD Human Sensor Library v1.0.1 Example - Calibrate a human sensor.
 // https://github.com/alextaujenis/RBD_HumanSensor
 // Copyright 2015 Alex Taujenis
 // MIT License

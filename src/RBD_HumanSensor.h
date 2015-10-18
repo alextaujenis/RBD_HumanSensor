@@ -1,4 +1,4 @@
-// Arduino RBD Human Sensor Library v1.0.0 - Detect proximity, touch, and pickup events in real-time with no delay.
+// Arduino RBD Human Sensor Library v1.0.1 - Detect human presence, touch, and pickup events.
 // https://github.com/alextaujenis/RBD_HumanSensor
 // Copyright 2015 Alex Taujenis
 // MIT License
