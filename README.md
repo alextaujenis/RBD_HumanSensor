@@ -1,4 +1,4 @@
-#Arduino Human Sensory Library v1.0.1
+#Arduino Human Sensor Library v1.0.1
 Measure change in capacitance to detect human presence, touch, and pickup events without delay.
 
 * [Documentation](https://alextaujenis.github.io/RobotsBigData/compiled/docs-arduino-human-sensor.html)
