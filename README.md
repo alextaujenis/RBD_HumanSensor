@@ -1,8 +1,8 @@
-#Arduino Human Sensor Library v1.0.1
+#Arduino Human Sensor Library v1.0.2
 Measure change in capacitance to detect human presence, touch, and pickup events without delay.
 
-* [Documentation](https://alextaujenis.github.io/RobotsBigData/docs-arduino-human-sensor.html)
-* [Project Website](https://alextaujenis.github.io/RobotsBigData/)
+* [Documentation](http://robotsbigdata.com/docs-arduino-human-sensor.html)
+* [Project Website](http://robotsbigdata.com)
 * [Report an Issue](https://github.com/alextaujenis/RBD_HumanSensor/issues/new)*
 
 \**Please include your Arduino make/model and IDE version when reporting an issue with this library.*
