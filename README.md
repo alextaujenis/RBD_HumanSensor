@@ -2,6 +2,7 @@
 Measure change in capacitance to detect human presence, touch, and pickup events without delay.
 
 * [Documentation](http://robotsbigdata.com/docs-arduino-human-sensor.html)
+* [Download Library](https://github.com/alextaujenis/RBD_HumanSensor/raw/master/extras/RBD_HumanSensor.zip)
 * [Project Website](http://robotsbigdata.com)
 * [Report an Issue](https://github.com/alextaujenis/RBD_HumanSensor/issues/new)*
 
