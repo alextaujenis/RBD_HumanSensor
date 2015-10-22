@@ -1,4 +1,4 @@
-HumanSensor KEYWORD1
+HumanSensor	KEYWORD1
 update	KEYWORD2
 setSampleSize	KEYWORD2
 setNearValue	KEYWORD2
