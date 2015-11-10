@@ -1,4 +1,4 @@
-// Arduino RBD Human Sensor Library v1.0.2 - Detect human presence, touch, and pickup events.
+// Arduino RBD Human Sensor Library v1.0.3 - Detect human presence, touch, and pickup events.
 // https://github.com/alextaujenis/RBD_HumanSensor
 // Copyright 2015 Alex Taujenis
 // MIT License
@@ -174,13 +174,11 @@ namespace RBD {
   }
 
   int HumanSensor::getActiveLevel() {
-    // this function memoizes the level so it's only computed when the raw value or modifier changes
-    // get the current (modifed raw) value
     _temp_value = getValue();
 
-    // check if it has changed
+    // memoize the level, only recompute on change
     if (_temp_value != _temp_prev_value) {
-      // save a new level if it has changed
+      // save a new level
       _temp_level = _threshold.computeLevel(_temp_value);
       // store the old value
       _temp_prev_value = _temp_value;
@@ -199,5 +197,3 @@ namespace RBD {
     _has_been_pickup = false;
   }
 }
-
-
