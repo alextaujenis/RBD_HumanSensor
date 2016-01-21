@@ -36,14 +36,12 @@ namespace RBD {
     if(isGone()) {
       if(!_has_been_gone) {
         _resetEvents();
-        _has_been_gone = true;
-        return true;
+        return _has_been_gone = true;
       }
       return false;
     }
     else {
-      _has_been_gone = false;
-      return false;
+      return _has_been_gone = false;
     }
   }
 
@@ -51,14 +49,12 @@ namespace RBD {
     if(isNear()) {
       if(!_has_been_near) {
         _resetEvents();
-        _has_been_near = true;
-        return true;
+        return _has_been_near = true;
       }
       return false;
     }
     else {
-      _has_been_near = false;
-      return false;
+      return _has_been_near = false;
     }
   }
 
@@ -66,14 +62,12 @@ namespace RBD {
     if(isTouch()) {
       if(!_has_been_touch) {
         _resetEvents();
-        _has_been_touch = true;
-        return true;
+        return _has_been_touch = true;
       }
       return false;
     }
     else {
-      _has_been_touch = false;
-      return false;
+      return _has_been_touch = false;
     }
   }
 
@@ -81,14 +75,12 @@ namespace RBD {
     if(isPickup()) {
       if(!_has_been_pickup) {
         _resetEvents();
-        _has_been_pickup = true;
-        return true;
+        return _has_been_pickup = true;
       }
       return false;
     }
     else {
-      _has_been_pickup = false;
-      return false;
+      return _has_been_pickup = false;
     }
   }
 
@@ -131,7 +123,6 @@ namespace RBD {
       return false;
     }
   }
-
 
   bool HumanSensor::onActiveLevelChange() {
     _new_level = getActiveLevel();
