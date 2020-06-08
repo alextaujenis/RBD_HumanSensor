@@ -1,7 +1,6 @@
-// Arduino RBD Human Sensor Library v1.0.4 Example - Calibrate a human sensor.
+// Arduino RBD Human Sensor Library v1.0.5 Example - Calibrate a human sensor.
 // https://github.com/alextaujenis/RBD_HumanSensor
-// Copyright 2015 Alex Taujenis
-// MIT License
+// Copyright (c) 2015 Alex Taujenis - MIT License
 
 #include <RBD_Capacitance.h> // https://github.com/alextaujenis/RBD_Capacitance
 #include <RBD_Threshold.h>   // https://github.com/alextaujenis/RBD_Threshold
